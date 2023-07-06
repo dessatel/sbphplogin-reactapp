@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ <!-- THIS FILE SHOULD NOT BE USED ANYMORE NEW FILE is snuiapp/login.html -->
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../sbuiauth/styles.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
     <!-- <form action="auth.php"> -->
     <div class="outer-grid">
         <div class="container">
-            <img class="logo" src="streambox-logo.svg" />
+            <img class="logo" src="../sbuiauth/streambox-logo.svg" />
             <div class="grid">
                 <label for="username">Username:</label>
                 <input id="username-box" name="username" type="text" />
@@ -29,50 +29,71 @@
     </div>
     <!-- </form> -->
     <footer>
-        Powered by Streambox, Inc. All rights reserved Version 1.07
+        Powered by Streambox, Inc. All rights reserved Version 1.14
     </footer>
 </body>
-
 </html>
-<script>
-    window.addEventListener("keypress", (event) => {
-        if (event.keyCode == 13) {
-            authenticate()
-        }
-    })
-    async function authenticate() {
+
+<script type="text/javascript" language="javascript" src="../REST/inc/jquery.min.js"></script>
+<script type="text/javascript">
+
+function SendCommandCustom(c, callback, url, onfail){
+	var params = "c="+encodeURIComponent(c);
+	if (onfail)
+		$.post(url, params, callback).fail(onfail);
+	else
+		$.post(url, params, callback);
+}    
+
+
+
+function makePwdUneditable()
+{
+    // print to console
+}
+
+
+function logout(){
+	var r = {
+		"command"    :"logout"
+	}
+	SendCommandCustom(JSON.stringify(r), onReload, "../REST/sys/autsys/auth");
+}
+
+ async function authenticate() {
         const username = document.getElementById("username-box").value
         const password = document.getElementById("password-box").value
+         /// Standard Chroma Authentication API
+        var r = {
+		    "command":  "auth"
+		    ,"userID":  username
+		    ,"pwd"   :  password
+	    }
+        
+	    SendCommandCustom(JSON.stringify(r), onAuth, "../REST/sys/auth", onAuthFailed );
+}
 
-        let formData = new FormData();
-        formData.append("username", username);
-        formData.append("password", password);
-        formData.append("fromreact", 0);
-
-        const response = await fetch("/sbuiauth/auth.php", {
-            method: 'POST',
-            body: formData
-        });
-
-        let json = await response.text()
-        if (json.indexOf('Wrote') === 0) {
-            alert('The app was run for the first time and needed to initialize the backend (created accounts db).  Please log in again.')
-            document.getElementById("username-box").value = ""
-            document.getElementById("password-box").value = ""
-        } else {
-            let [loginStatus, token] = JSON.parse(json)
-
-            if (loginStatus === "login success") {
-                //TODO: local server endpoint
-                //window.location = `http://localhost:3000?user=${username}&token=${token}`
-
-                //TODO: remote server endpoint
-                window.location = `${location.origin}/sbuiapp?user=${username}&token=${token}`
-            } else if (loginStatus === "login failure") {
-                document.getElementById("invalid-pass-div").textContent = "Username or password is incorrect"
-            } else {
-                document.getElementById("invalid-pass-div").textContent = "Something went wrong when authenticating"
-            }
+function onAuthFailed(xmlHttp, textStatus, errorThrown ){
+        document.getElementById("invalid-pass-div").textContent = "Username or password is incorrect"
+}
+    
+function onAuth(data, textStatus, xmlHttp){
+        makePwdUneditable(0);
+        if (!data){
+            document.getElementById("aa").innerHTML = "error?" ;
+            return;
         }
+        switch(data.result_code){
+            case 0:
+                // login success !
+                window.location = `${location.origin}/sbuiapp`
+                break;
+            default:
+                //document.getElementById("invalid-pass-div").textContent = "Username or password is incorrect"
+                alert("ERR?? " + data.result_code + " " + data.message);
+                break;
+        }   
     }
+
+   
 </script>

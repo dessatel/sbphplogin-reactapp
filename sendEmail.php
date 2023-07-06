@@ -2,6 +2,9 @@
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Request-Method: GET');
 
+// need to add change for authenictaion
+
+
 $emailAddresses = $_GET['emailAddresses'];
 $hostName = $_GET['hostName'];
 $emailTitle = $_GET['emailTitle'];
