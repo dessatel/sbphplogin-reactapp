@@ -14,10 +14,24 @@
         <input type="file" id="file-input" />
         <input type="submit" id="submit-btn" />
     </form>
-</body>
 
+<body onload="CheckAuth()">
 </html>
+
 <script>
+
+    async function CheckAuth() {
+        const response = await fetch("../REST/sys/auth", { method: "POST" });
+
+        if (response.status == 200) { // authorized
+            console.log("Authorized");
+        } else { // status: 401
+            console.log("NOT Authorized");
+            // redirect to login page
+            window.location = `../sbuiapp/login.html`
+        }
+    }
+
     document.getElementById("form").addEventListener("submit", handleClick)
 
     async function handleClick(e) {

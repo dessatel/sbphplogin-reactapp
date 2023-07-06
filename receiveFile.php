@@ -1,6 +1,8 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 
+// need to add change for authenictaion
+
 if (isset($_FILES["file"])) {
     $periodIndex = strpos(($_FILES["file"]["name"]), ".");
     $extension = substr($_FILES["file"]["name"], $periodIndex, strlen($_FILES["file"]["name"]));
