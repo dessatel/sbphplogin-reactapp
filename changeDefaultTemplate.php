@@ -1,6 +1,8 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 
+include_once("../REST/encoder/auth.inc");
+
 $default_template_xml_path = "../data/defaultTemplate.xml";
 $template_name = $_POST['templatename'];
 

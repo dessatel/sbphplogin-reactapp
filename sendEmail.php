@@ -2,6 +2,8 @@
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Request-Method: GET');
 
+include_once("../REST/encoder/auth.inc");
+
 // need to add change for authenictaion
 
 

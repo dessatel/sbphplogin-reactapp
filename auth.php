@@ -1,5 +1,8 @@
 <?php
+
 header('Access-Control-Allow-Origin: *');
+include_once("../REST/encoder/auth.inc");
+
 
 $accounts_xml_path = "../data/accounts.xml";
 $sessions_xml_path = "../data/sessions.xml";
