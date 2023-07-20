@@ -32,6 +32,12 @@ $emailsArray = explode(",", $emailAddresses);
 foreach ($emailsArray as $email) {
     $mail->AddAddress($email);
 }
+$server='liveus.streambox.com';
+if (strtolower(substr($sessionID, 0, 1)) === 'r') {
+    $server = 'broker.streambox.com';
+} else {
+    $server = 'live.streambox.com';
+}
 
 $mail->setFrom('streambox.mail2@gmail.com', 'Streambox Sessions');
 $mail->Subject = "Session Invitation from " . $hostName;
@@ -39,7 +45,7 @@ $mail->Body    = "Session Name:  $emailTitle
 <br>
 <br>
 Join Session: 
-https://liveus.streambox.com/ls/launchsession.php?sessionId=$sessionID
+https://$server/ls/launchsession.php?sessionId=$sessionID
 <br>
 <br>
 Streambox Media Players:
