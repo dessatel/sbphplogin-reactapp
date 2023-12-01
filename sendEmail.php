@@ -41,13 +41,13 @@ if (strtolower(substr($sessionID, 0, 1)) === 'r') {
     $server = 'live.streambox.com';
 }
 
-$mail->setFrom('session@streambox.com', 'Streambox Sessions');
+$mail->setFrom('session@streambox.com', 'Streambox Session Invite');
 //
-$mail->Subject = "Session Invitation from " . $hostName;
+$mail->Subject = "Streambox Session Invitation from " . $hostName;
 $mail->Body    = "Session Name:  $emailTitle
 <br>
 <br>
-Join Streambox Libe Session: 
+Join Streambox Live Session: 
 https://$server/ls/launchsession.php?sessionId=$sessionID
 <br>
 <br>
