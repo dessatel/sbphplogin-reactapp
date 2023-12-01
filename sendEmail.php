@@ -28,7 +28,7 @@ $mail->Port = 465;
 $mail->IsHTML(true);
 $mail->Username = "session@streambox.com";
 $mail->Password = "moon-is-rising-over-me";
-#$mail->Password = $_ENV['MAIL_PASSWORD'];
+//$mail->Password = $_ENV['MAIL_PASSWORD'];
 
 $emailsArray = explode(",", $emailAddresses);
 foreach ($emailsArray as $email) {
