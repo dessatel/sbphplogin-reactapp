@@ -27,8 +27,8 @@ $mail->Host = "smtp.gmail.com";
 $mail->Port = 465;
 $mail->IsHTML(true);
 $mail->Username = "session@streambox.com";
-$mail->Password = "moon-is-rising-over-me";
-//$mail->Password = $_ENV['MAIL_PASSWORD'];
+$mail->Password = "zbvkhmhzrewpduzc";
+
 
 $emailsArray = explode(",", $emailAddresses);
 foreach ($emailsArray as $email) {
