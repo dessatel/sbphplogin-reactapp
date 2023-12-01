@@ -26,8 +26,10 @@ $mail->SMTPSecure = 'ssl';
 $mail->Host = "smtp.gmail.com";
 $mail->Port = 465;
 $mail->IsHTML(true);
-$mail->Username = "streambox.mail2@gmail.com";
-$mail->Password = "bnsxainzymdmlnmy";
+$mail->Username = "session@streambox.com";
+$mail->Password = "moon-is-rising-over-me";
+#$mail->Password = $_ENV['MAIL_PASSWORD'];
+
 $emailsArray = explode(",", $emailAddresses);
 foreach ($emailsArray as $email) {
     $mail->AddAddress($email);
@@ -39,12 +41,13 @@ if (strtolower(substr($sessionID, 0, 1)) === 'r') {
     $server = 'live.streambox.com';
 }
 
-$mail->setFrom('streambox.mail2@gmail.com', 'Streambox Sessions');
+$mail->setFrom('session@streambox.com', 'Streambox Sessions');
+//
 $mail->Subject = "Session Invitation from " . $hostName;
 $mail->Body    = "Session Name:  $emailTitle
 <br>
 <br>
-Join Session: 
+Join Streambox Libe Session: 
 https://$server/ls/launchsession.php?sessionId=$sessionID
 <br>
 <br>
