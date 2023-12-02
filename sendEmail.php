@@ -51,17 +51,20 @@ $mail->Body    = "Session Name:  $emailTitle
 <br>
 $hostName has sent you an invite to join their Streambox Session stream!<br>
 Session Name:  $emailTitle<br>
-Join Streambox Live Session: <br>
-https://$server/ls/launchsession.php?sessionId=$sessionID
 <br>
+Join Streambox Live Session: <a href=https://$server/ls/launchsession.php?sessionId=$sessionID>Click to Start</a>
+<br><br>
+Or Scan QR Code<br>
+<img style='width: 100px;'  src='https://api.qrserver.com/v1/create-qr-code/?data=https://$server/ls/launchsession.php?sessionId=$sessionI'&amp;size=100x100/>
 <br>
+<br> 
 Streambox Media Players:
 <br>
 To receive this video stream you will need a Streambox Media Player/Decoder. 
 <br>
 You can download instructions for various Streambox Players/Decoders here:
 <br>
-https://streambox-mediaplayer.s3.us-west-2.amazonaws.com/latest/streambox_mediaplayer_sessions.pdf 
+https://www.streambox.com/knowledgebase/getting-started-with-streambox-media-player
 <br>
 <br>
 If you have any questions, please feel free to contact Streambox at:
