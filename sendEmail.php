@@ -46,7 +46,11 @@ $mail->setFrom('session@streambox.com', 'Streambox Session Invite');
 $mail->Subject = "Streambox Session Invitation from " . $hostName;
 $mail->Body    = "Session Name:  $emailTitle
 <br>
+<br>Hello,
 <br>
+<br>
+$hostName has sent you an invite to join their Streambox Session stream!
+Session Name:  $emailTitle
 Join Streambox Live Session: 
 https://$server/ls/launchsession.php?sessionId=$sessionID
 <br>
