@@ -57,7 +57,10 @@ Join Streambox Live Session: <a href=https://$server/ls/launchsession.php?sessio
 Or Scan QR Code<br>
 <img style='width: 100px;'  src='https://api.qrserver.com/v1/create-qr-code/?data=https://$server/ls/launchsession.php?sessionId=$sessionI'&amp;size=100x100/>
 <br>
-<br> 
+<br>
+Or Enter Session ID <b>$sessionID</b> Manually  
+<br>
+<br>
 Streambox Media Players:
 <br>
 To receive this video stream you will need a Streambox Media Player/Decoder. 
