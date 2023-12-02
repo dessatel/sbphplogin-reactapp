@@ -49,9 +49,9 @@ $mail->Body    = "Session Name:  $emailTitle
 <br>Hello,
 <br>
 <br>
-$hostName has sent you an invite to join their Streambox Session stream!
-Session Name:  $emailTitle
-Join Streambox Live Session: 
+$hostName has sent you an invite to join their Streambox Session stream!<br>
+Session Name:  $emailTitle<br>
+Join Streambox Live Session: <br>
 https://$server/ls/launchsession.php?sessionId=$sessionID
 <br>
 <br>
